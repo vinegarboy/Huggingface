@@ -3,10 +3,6 @@ import sys
 
 # Hugging FaceのモデルIDを指定
 model_id = "CohereForAI/c4ai-command-r-plus"
-# 指定されたモデルIDを使用してトークナイザーをロード
-tokenizer = AutoTokenizer.from_pretrained(model_id)
-# 指定されたモデルIDを使用して生成モデルをロード
-model = AutoModelForCausalLM.from_pretrained(model_id)
 
 # 起動引数を取得
 args = sys.argv
@@ -22,6 +18,11 @@ else:
     # 引数が不正な場合
     print("引数が不正です")
     sys.exit()
+
+# 指定されたモデルIDを使用してトークナイザーをロード
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+# 指定されたモデルIDを使用して生成モデルをロード
+model = AutoModelForCausalLM.from_pretrained(model_id)
 
 # チャット形式のメッセージをリストとして定義
 messages = [{"role": "user", "content": args[1]}]
